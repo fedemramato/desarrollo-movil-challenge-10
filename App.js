@@ -9,6 +9,8 @@ import AuthLoadingScreen from './screens/AuthLoadingScreen'
 
 import firebase, { db } from './firebase'
 
+import { registerForNotification } from './notification'
+
 const AppStack = createBottomTabNavigator(
   {
     Home: HomeScreen,
@@ -55,6 +57,9 @@ const MainNavigator = createSwitchNavigator(
 )
 
 export default class App extends Component {
+  componentWillMount() {
+    registerForNotification()
+  }
   render() {
     return <MainNavigator />
   }
